@@ -1,0 +1,171 @@
+body, html {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Altura fija del viewport */
+    background-color: black;
+    color: white;
+    overflow: hidden; /* Previene scroll general */
+    backdrop-filter: blur(10px);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: calc(100vh - 80px); /* Altura total menos el header */
+    padding: 0 20px;
+    position: relative;
+    
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5px;
+    height: 60px; /* Altura fija para el header */
+    position: relative;
+    z-index: 2;
+    
+    
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    gap: 40px; /* Espacio entre columnas */
+    
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+.wallet-button {
+    padding: 10px 20px;
+    width: 150px;
+    height: auto;
+    background-color: orangered;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: center;
+}
+.wallet-button:hover {
+    background-color: orange;
+}
+
+
+.event-info {
+    flex: 1;
+    padding-right: 20px;
+    overflow-y: auto; /* Permite scroll solo en esta sección */
+    height: calc(100vh - 100px); /* Altura ajustada */
+    /* Estilizar la barra de scroll */
+    scrollbar-width: thin;
+    scrollbar-color: orangered rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Estilo para la barra de scroll en WebKit (Chrome, Safari) */
+.event-info::-webkit-scrollbar {
+    width: 8px;
+}
+
+.event-info::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.event-info::-webkit-scrollbar-thumb {
+    background: orangered;
+    border-radius: 4px;
+}
+
+.voting-section {
+    flex: 1;
+    position: sticky;
+    top: 20px;
+    height: calc(100vh - 100px); /* Altura fija */
+    overflow: hidden; /* Previene scroll en esta sección */
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
+
+/* Ajustes para mantener el contenido de votación centrado */
+.voting-section img {
+    max-height: 30vh; /* Limitar altura de la imagen */
+    object-fit: contain;
+}
+
+.vote-options {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.vote-option {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.vote-option:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+.yes-option {
+    background-color: rgba(76, 175, 79, 0.233);
+}
+.no-option {
+    background-color: rgba(244, 67, 54, 0.233);
+}
+
+/* Ajustes para el contenedor de wallet */
+#connect-wallet-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.233);
+    backdrop-filter: blur(10px);
+}
+
+.modoC {
+    width: 650px;
+    height: auto;
+
+}
+
+.modo {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.ass {
+    text-align: center;
+}
+
+.modoB{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#vote-status{
+    text-align: center;
+}
+/* El resto de tus estilos permanece igual */

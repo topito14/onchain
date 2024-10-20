@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votación del Evento</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <script src="https://cdn.jsdelivr.net/npm/@coinbase/wallet-sdk@3.6.3/dist/index.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <!-- Cambiar esta línea en el head -->
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+   
+</head>
+<body>
+    <div id="connect-wallet-container">
+        <div class="modoC">
+            <span class="modo">Únete al evento Blockchain más innovador del año. Explora, aprende y conéctate con expertos. Oportunidades exclusivas y nuevos horizontes.<br/></span>
+            <span >Descubre el futuro de la tecnología descentralizada y participa en una experiencia blockchain inolvidable.</span>
+        </div>
+        <div class="modoB">
+            <button id="connect-wallet" class="wallet-button">Conecta tu Wallet</button>
+            <p id="wallet-address">Wallet no conectada</p>
+        </div>
+    </div>
+
+
+
+    <div id="event-container">
+        <div class="header">
+            <div class="logo">EventoChain</div>
+            <button id="wallet-connected" class="wallet-button">Wallet Conectada</button>
+        </div>
+
+        <div class="container">
+            <div class="content">
+                <div class="event-info">
+                    <h1>🎉 Conferencia Blockchain 2024 🎉</h1>
+                    <p>📅 Fecha: 15 de Noviembre, 2024</p>
+                    <p>🕑 Lugar: Centro de Convenciones, Ciudad Innovación</p>
+                    <p>😊Organiza: TechFuture Asociados</p>
+                    <p>Descripción: Únete a nosotros en la Conferencia Blockchain 2024, donde exploraremos las últimas tendencias y avances en tecnología blockchain. Contaremos con ponentes de renombre internacional, talleres prácticos y oportunidades de networking únicas. ¡No te pierdas la oportunidad de ser parte del futuro de la tecnología!</p>
+                    <p>Asistentes confirmados: 24 personas</p>
+                <!-- Comentarios de asistentes -->
+                <div class="comments-section">
+                    <div class="comment">
+                        <p>👤 María López</p>
+                        <p>⭐⭐⭐⭐⭐</p>
+                        <p>¡Super emocionada por asistir! El año pasado fue increíble y este año promete ser aún mejor. Me interesa especialmente el taller de smart contracts.</p>
+                    </div>
+
+                    <div class="comment">
+                        <p>👤 Carlos Rodríguez</p>
+                        <p>⭐⭐⭐⭐</p>
+                        <p>Primera vez que asistiré. Me han hablado maravillas de los ponentes internacionales. ¿Alguien sabe si habrá traducción simultánea?</p>
+                    </div>
+
+                    <div class="comment">
+                        <p>👤 Ana Valencia</p>
+                        <p>⭐⭐⭐⭐⭐</p>
+                        <p>Ya compré mi entrada VIP. El networking del año pasado me ayudó a conseguir inversores para mi startup. ¡No puedo esperar!</p>
+                    </div>
+
+                    <div class="comment">
+                        <p>👤 Jorge Méndez</p>
+                        <p>⭐⭐⭐⭐</p>
+                        <p>Vengo desde Chile específicamente para esta conferencia. ¿Alguien más viene del extranjero? Podríamos organizar una cena previa.</p>
+                    </div>
+
+                    <div class="comment">
+                        <p>👤 Laura Martínez</p>
+                        <p>⭐⭐⭐⭐⭐</p>
+                        <p>Los talleres prácticos son lo mejor. El año pasado aprendí muchísimo sobre DeFi. Espero que este año profundicen en NFTs.</p>
+                    </div>
+
+                    <div class="comment">
+                        <p>👤 Pedro Sánchez</p>
+                        <p>⭐⭐⭐</p>
+                        <p>Me gustaría saber si habrá descuentos para estudiantes. Somos varios de la universidad interesados en asistir.</p>
+                    </div>
+
+                    <div class="comment">
+                        <p>👤 Isabel Torres</p>
+                        <p>⭐⭐⭐⭐⭐</p>
+                        <p>¡Excelente organización siempre! Ya reservé mi hotel. Tip para los que vienen de fuera: el hotel del centro de convenciones suele llenarse rápido.</p>
+                    </div>
+                </div>    
+                </div>
+                
+                <div class="voting-section">
+                    <img src="https://media0.giphy.com/media/NuWH6LTqf7xw4/giphy.webp?cid=c00e53c6gle7t6iy29ia3tdqkbrts7t8b32jgrbtoq9fz5b6&ep=v1_gifs_search&rid=giphy.webp&ct=g" alt="Event GIF" style="width: 100%; margin-bottom: 20px;">
+                    <h2 class="ass">¿Asistirás al evento?</h2>
+                    <div class="vote-options">
+                        <div id="vote-option1" class="vote-option yes-option">🎉</div>
+                        <div id="vote-option2" class="vote-option no-option">😒</div>
+                    </div>
+                    <p id="vote-status">No has votado aún</p>
+                    <button id="get-votes" class="wallet-button">Actualizar votos</button>
+                    <p id="votes-display">Aún no se han obtenido los votos</p>
+                    <p class="attendance">Han confirmado su asistencia: <span id="attendance-count">0</span> personas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        document.getElementById('connect-wallet').addEventListener('click', function() {
+            document.getElementById('connect-wallet-container').style.display = 'none';
+            document.getElementById('event-container').style.display = 'block';
+        });
+
+        // Simulación de actualización de asistentes
+        let attendanceCount = 24;
+        document.getElementById('attendance-count').textContent = attendanceCount;
+
+        // Actualizar el conteo cuando se vota "Sí"
+        document.getElementById('vote-option1').addEventListener('click', function() {
+            attendanceCount++;
+            document.getElementById('attendance-count').textContent = attendanceCount;
+        });
+        
+        
+        VANTA.BIRDS({
+            el: "body",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: window.innerHeight,
+            minWidth: window.innerWidth,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            backgroundColor: 0x12172e, // Color de fondo oscuro
+            color1: 0xb34d3a,         // Color principal de los pájaros
+            color2: 0xd1414,         // Color secundario
+            colorMode: "variance",
+            birdSize: 1.50,           // Tamaño de los pájaros
+            wingSpan: 40.00,          // Envergadura de las alas
+            speedLimit: 5.00,         // Límite de velocidad
+            separation: 100.00,        // Separación entre pájaros
+            alignment: 100.00,         // Alineación del movimiento
+            cohesion: 100.00          // Cohesión del grupo
+        });
+
+    </script>
+</body>
+</html>
