@@ -7,7 +7,8 @@ Try running some of the following tasks:
 ```shell
 npm install
 npx hardhat node
-npx hardhat run --network ropsten scripts/deploy.js
+npx hardhat run --network localhost scripts/deploy.js
+
 
 ```
 
